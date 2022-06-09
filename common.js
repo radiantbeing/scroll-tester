@@ -1,8 +1,10 @@
 (async function () {
   const body = QS("#loremBody");
-
+  const quantity = 1000;
   // Create DOM element
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < quantity; i++) {
+    QS("#loadingBar").style.width = `${(i / quantity) * 100}%`;
+    QS("#loadingInfo").textContent = `Generated paragraph: ${i + 1}/${quantity}`;
     if (i == 0) {
       body.innerHTML += "<p>" + i + "\t" + (await createParagraph(true)) + "</p>";
       continue;

@@ -1,14 +1,25 @@
+<!-- 
+    TODO:
+    * DOM creation is too slow, requiring better performance
+
+    FIXME: 
+-->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scroll Tester</title>
-    <script type="module" defer src="common.js"></script>
+    <link rel="stylesheet" href="common.css" />
   </head>
   <body>
     <div class="container" id="loremBody">
       <h1>Scroll Tester</h1>
+      <div class="loading-bar-wrapper">
+        <div class="loading-bar" id="loadingBar"></div>
+        <div id="loadingInfo"></div>
+      </div>
     </div>
+    <script src="common.js"></script>
   </body>
 </html>
