@@ -1,15 +1,16 @@
 (async function () {
-  const body = QS("#loremBody");
+  const res = await fetch("lorem.json");
+  const result = await res.json();
+
   const quantity = 1000;
-  // Create DOM element
+  const body = QS("#loremBody");
+  const loadingBar = QS("#loadingBar");
+  const loadingInfo = QS("#loadingInfo");
+
+  const data = { text: result, quantity: quantity, body: body, loadBar: loadingBar, loadInfo: loadingInfo };
+
   for (let i = 0; i < quantity; i++) {
-    QS("#loadingBar").style.width = `${(i / quantity) * 100}%`;
-    QS("#loadingInfo").textContent = `Generated paragraph: ${i + 1}/${quantity}`;
-    if (i == 0) {
-      body.innerHTML += "<p>" + i + "\t" + (await createParagraph(true)) + "</p>";
-      continue;
-    }
-    body.innerHTML += "<p>" + i + "\t" + (await createParagraph(false)) + "</p>";
+    await appendParagraph(data, i);
   }
 })();
 
@@ -17,23 +18,20 @@ function QS(selector) {
   return document.querySelector(selector);
 }
 
-async function createParagraph(isFirst) {
-  let lorems = "";
-  for (let i = 0; i < 3; i++) {
-    lorems += (await getLoremText(isFirst)) + " ";
-  }
-  return lorems;
+function createEl(name) {
+  return document.createElement(name);
 }
 
-async function getLoremText(isFirst) {
-  const res = await fetch("lorem.json");
-  const data = await res.json();
+async function appendParagraph(data, index) {
+  setTimeout(() => {
+    data.loadBar.style.width = `${(index / data.quantity) * 100}%`;
+    data.loadInfo.textContent = `Generated paragraph: ${index + 1}/${data.quantity}`;
 
-  const rand = Math.round(Math.random() * 8) + 1;
+    const rand = Math.round(Math.random() * 8) + 1;
+    const paragraphText = data.text[rand] + " " + data.text[rand] + " " + data.text[rand];
+    const newPara = createEl("p");
+    newPara.innerText = "\t" + paragraphText;
 
-  if (isFirst == true) {
-    return data[0];
-  } else {
-    return data[rand];
-  }
+    data.body.appendChild(newPara);
+  }, 0);
 }
