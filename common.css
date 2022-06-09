@@ -1,3 +1,8 @@
+.loading-wrapper {
+  margin: 16px 0;
+  display: none;
+}
+
 .loading-bar {
   height: 8px;
   background-color: black;
