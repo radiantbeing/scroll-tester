@@ -1,9 +1,9 @@
 <!-- 
     TODO:
-    * DOM creation is too slow, requiring better performance
-
     FIXME: 
+    * Need to fix event handler overlapping phenomenon when click run button several times
 -->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,15 +11,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scroll Tester</title>
     <link rel="stylesheet" href="common.css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM69QX6Y3Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-GM69QX6Y3Y");
+    </script>
   </head>
   <body>
-    <div class="container" id="loremBody">
-      <h1>Scroll Tester</h1>
-      <div class="loading-bar-wrapper">
-        <div class="loading-bar" id="loadingBar"></div>
-        <div id="loadingInfo"></div>
-      </div>
+    <h1>Scroll Tester</h1>
+    <div class="loading-wrapper">
+      <div class="loading-bar" id="loadingBar"></div>
+      <div id="loadingInfo"></div>
     </div>
+    <div id="loremBody"></div>
     <script src="common.js"></script>
   </body>
 </html>
