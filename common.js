@@ -6,6 +6,12 @@
   const loadingBar = QS("#loadingBar");
   const loadingInfo = QS("#loadingInfo");
 
+  QS("#paragraphsNum").addEventListener("keyup", (event) => {
+    if (event.keyCode == 13) {
+      QS("#runBtn").click();
+    }
+  });
+
   QS("#runBtn").addEventListener("click", async (event) => {
     body.innerHTML = "";
 
@@ -37,7 +43,7 @@ async function appendParagraph(data, index) {
   setTimeout(() => {
     renewLoadBar(data.loadBar, data.loadInfo, index, data.quantity);
 
-    const rand = Math.round(Math.random() * 8) + 1;
+    const rand = Math.floor(Math.random() * 10);
     const paragraphText = data.text[rand] + " " + data.text[rand] + " " + data.text[rand];
     const newPara = document.createElement("p");
     newPara.innerText = "\t" + paragraphText;
