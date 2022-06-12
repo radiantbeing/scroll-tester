@@ -44,7 +44,7 @@ async function appendParagraph(data, index) {
     renewLoadBar(data.loadBar, data.loadInfo, index, data.quantity);
 
     const rand = Math.floor(Math.random() * 10);
-    const paragraphText = data.text[rand] + " " + data.text[rand] + " " + data.text[rand];
+    const paragraphText = index + 1 + " " + data.text[rand] + " " + data.text[rand] + " " + data.text[rand];
     const newPara = document.createElement("p");
     newPara.innerText = "\t" + paragraphText;
 
