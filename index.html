@@ -11,10 +11,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scroll Tester</title>
-    <link rel="shortcut icon" href="icon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="common.css" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="./img/icon/icon_logo_01_dark.svg"
+      type="image/x-icon"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="shortcut icon"
+      href="./img/icon/icon_logo_02_light.svg"
+      type="image/x-icon"
+      media="(prefers-color-scheme: dark)"
+    />
+    <!-- RADIANT TEMPLATE -->
+    <link rel="stylesheet" href="./radiant_template/css/radiant_template.css" />
+    <script defer src="./radiant_template/js/radiant_template.js"></script>
+    <!-- Custom -->
+    <script defer src="common.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM69QX6Y3Y"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GM69QX6Y3Y"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -24,22 +43,76 @@
 
       gtag("config", "G-GM69QX6Y3Y");
     </script>
+    <style>
+      body,
+      body[data-theme="light"] {
+        --bar-color: #292929;
+      }
+
+      body[data-theme="dark"] {
+        --bar-color: #ffffff;
+      }
+
+      .container {
+        margin-top: 3rem;
+      }
+      .loading-wrapper {
+        margin: 16px 0;
+        display: none;
+      }
+      .loading-bar {
+        height: 4px;
+        background-color: var(--bar-color);
+        border-radius: 8px;
+      }
+    </style>
   </head>
   <body>
-    <div class="header">
-      <img class="logo-icon" src="icon.svg" alt="icon" />
-      <h1>Scroll Tester</h1>
+    <!-- RADIANT TEMPLATE Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <img
+          class="navbar-brand-logo"
+          src="./img/icon/icon_logo_01_dark.svg"
+          alt="brand"
+        />
+        <a class="navbar-brand-title">Scroll Tester</a>
+      </div>
+      <div class="navbar-navs" id="navbarNavs">
+        <ul class="navbar-links">
+          <li class="navbar-link-item"><a href="#">PROJECTS</a></li>
+          <li class="navbar-link-item"><a href="#">BLOG</a></li>
+        </ul>
+        <ul class="navbar-socials">
+          <li class="navbar-social-item">
+            <a href="#" target="_blank">
+              <img src="./img/icon/icon_github_01_dark.svg" alt="github" />
+            </a>
+          </li>
+          <!-- If you want to use dark mode, don't delete this <li> tag -->
+          <li class="navbar-social-item">
+            <a href="#" class="dark-mode-toggle" id="darkModeToggle">
+              <img
+                src="./img/icon/icon_half_circle_01_light.svg"
+                alt="dark mode"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h3>Create Paragraphs</h3>
+      <p>How many paragraphs do you want?</p>
+      <div>
+        <input type="text" id="paragraphsNum" />
+        <button class="button-primary" id="runBtn">Run</button>
+      </div>
+      <div class="loading-wrapper" id="loadingWrapper">
+        <div class="loading-bar" id="loadingBar"></div>
+        <div id="loadingInfo"></div>
+      </div>
+      <div id="loremBody"></div>
     </div>
-    <div>
-      How many paragraphs do you want?
-      <input type="text" id="paragraphsNum" />
-      <button id="runBtn">Run</button>
-    </div>
-    <div class="loading-wrapper">
-      <div class="loading-bar" id="loadingBar"></div>
-      <div id="loadingInfo"></div>
-    </div>
-    <div id="loremBody"></div>
-    <script src="common.js"></script>
   </body>
 </html>
