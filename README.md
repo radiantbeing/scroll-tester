@@ -12,9 +12,7 @@
 
 This is an application for mouse scroll test.
 
-## How to use?
-
-It’s simple.
+## How to use
 
 Enter the number of paragraphs you want to create and enter or click!
 
